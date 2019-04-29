@@ -1,0 +1,6 @@
+---
+# tasks file for docker-swarm
+- import_tasks: docker.yml
+  tags: docker
+- import_tasks: swarm.yml
+  tags: swarm

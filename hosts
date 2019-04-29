@@ -1,0 +1,31 @@
+
+[docker]
+master1     ansible_host=34.207.233.123
+master2     ansible_host=54.167.220.175
+master3     ansible_host=3.90.60.3
+
+worker1     ansible_host=18.207.161.164
+worker2     ansible_host=54.208.173.115
+worker3     ansible_host=3.81.172.18
+
+[swarm-master]
+master1
+
+[swarm-manager]
+master2
+master3
+
+[swarm-worker]
+worker1
+worker2
+worker3
+
+[all:children]
+docker
+swarm-master
+swarm-manager
+swarm-worker
+
+[all:vars]
+ansible_ssh_user=ubuntu
+ansible_ssh_private_key_file=~/Chaves/docker-swarm.pem

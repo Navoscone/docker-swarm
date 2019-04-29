@@ -1,0 +1,38 @@
+---
+
+- name: Installing Docker Python
+  pip: 
+    name: docker-py
+    state: present
+
+- name: Creating the cluster [init]
+  command: docker swarm init
+  when: "'swarm-master' in group_names"
+
+- name: Taking the Master address
+  shell: curl -s http://169.254.169.254/latest/meta-data/local-ipv4
+  register: address
+  delegate_facts: True
+  delegate_to: "{{ groups['swarm-master'][0] }}"
+
+- name: Creating the Managers token
+  command: docker swarm join-token -q manager
+  register: token
+  delegate_facts: True
+  delegate_to: "{{ groups['swarm-master'][0] }}"
+
+- name: Adding the Managers to the cluster
+  command: docker swarm join --token {{ token.stdout }} {{ address.stdout }}:2377
+  when: "'swarm-manager' in group_names"
+
+- name: Creating the Workers token
+  command: docker swarm join-token -q worker
+  register: token
+  delegate_facts: True
+  delegate_to: "{{ groups['swarm-master'][0] }}"
+
+- name: Adding the Workers to the cluster
+  command: docker swarm join --token {{ token.stdout }} {{ address.stdout }}:2377
+  when: "'swarm-worker' in group_names"
+  
+ 
