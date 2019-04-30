@@ -1,5 +1,4 @@
 # Docker CE Swarm 18.09
-![alt text]
 
 ## Clone do projeto
 
