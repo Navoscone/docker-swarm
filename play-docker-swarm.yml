@@ -1,4 +1,5 @@
 ---
+# docker-Swarm playbook
 
 - hosts: all
   become: yes
