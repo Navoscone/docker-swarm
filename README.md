@@ -31,7 +31,7 @@ worker3
 
 [all:vars]
 ansible_ssh_user=ubuntu
-<b>ansible_ssh_private_key_file=CAMINHO ATÉ A CHAVE</b>
+ansible_ssh_private_key_file=CAMINHO ATÉ A CHAVE
 </pre>
 ## Running Playbook!
 <pre>
