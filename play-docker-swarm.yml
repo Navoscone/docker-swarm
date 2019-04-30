@@ -1,0 +1,15 @@
+---
+#ATENÇÃO!
+#Antes de executar o playbook, setar qual o tipo de ambiente (P, H ou D).
+#Definir se sera usado nginx na frente ou não (y ou n) para fazer o SSL.
+#Se for usado NGINX na frente, setar a variavel nginx_use_default_conf para n.
+
+- hosts: all
+  become: yes
+  gather_facts: False
+  
+  pre_tasks:
+  - name: 'install python'
+    raw: 'sudo apt-get -y install python'
+  roles:
+   - docker-swarm
