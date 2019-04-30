@@ -1,6 +1,6 @@
 
 [docker]
-master1     ansible_host=
+master1     ansible_host= 
 master2     ansible_host=
 master3     ansible_host=
 
@@ -23,3 +23,4 @@ worker3
 [all:vars]
 ansible_ssh_user=ubuntu
 ansible_ssh_private_key_file=
+
