@@ -1,6 +1,6 @@
 # Docker CE Swarm 18.09
 
-## Clone do projeto
+## Clone do Projeto
 
 <pre>
 $ https://github.com/Navoscone/docker-swarm
