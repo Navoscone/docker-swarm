@@ -1,0 +1,7 @@
+version: '3'
+services:
+  web:
+    image: lucasroman/lucas-nginx:latest
+    ports:
+     - "80:80"
+
