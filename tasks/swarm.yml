@@ -52,7 +52,7 @@
 
 - name: Log into DockerHub
   docker_login:
-    username: lucasroman
+    username: USER DO DOCKER HUB
     password: "{{ password }}"
   when: "'swarm-master' in group_names"
 
