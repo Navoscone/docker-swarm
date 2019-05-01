@@ -1,5 +1,5 @@
 ---
-# tasks file for swarm
+# Tasks File for Swarm
 
 - name: Installing Docker Python
   pip: 
@@ -52,7 +52,7 @@
 
 - name: Log into DockerHub
   docker_login:
-    username: USER DO DOCKER HUB
+    username: "{{ user }}"
     password: "{{ password }}"
   when: "'swarm-master' in group_names"
 
