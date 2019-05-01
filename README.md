@@ -3,7 +3,7 @@
 ## Clone do Projeto
 
 <pre>
-$ https://github.com/Navoscone/docker-swarm
+$ git clone https://github.com/Navoscone/docker-swarm
 </pre>
 
 ## Arquivo hosts (Ajuste os IP's / Keypair)
