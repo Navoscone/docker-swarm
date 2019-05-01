@@ -37,5 +37,41 @@
 - name: Adding the Workers to the cluster
   command: docker swarm join --token {{ token.stdout }} {{ address.stdout }}:2377
   when: "'swarm-worker' in group_names"
+
+- name: Copying the dockerfile to the Master
+  template:
+    src: dockerfile.j2
+    dest: "{{ansible_user_dir}}/Dockerfile"
+  when: "'swarm-master' in group_names"
+
+- name: Copying the index.html to the master
+  template:
+    src: index.html.j2
+    dest: "{{ansible_user_dir}}/index.html"
+  when: "'swarm-master' in group_names"
+
+- name: Log into DockerHub
+  docker_login:
+    username: lucasroman
+    password: "{{ password }}"
+  when: "'swarm-master' in group_names"
+
+- name: Building the image and pushing it to the Docker Hub
+  docker_image:
+    path: "{{ansible_user_dir}}"
+    name: lucasroman/lucas-nginx
+    tag: latest
+    push: yes
+  when: "'swarm-master' in group_names"
+
+- name: Copying the docker-compose to the master
+  template:
+    src: docker-compose.j2
+    dest: "{{ansible_user_dir}}/docker-compose.yml"
+  when: "'swarm-master' in group_names"
+
+- name: Creating service in the cluster
+  shell: docker stack deploy -c {{ansible_user_dir}}/docker-compose.yml lucas-nginx
+  when: "'swarm-master' in group_names"
   
  
