@@ -3,6 +3,6 @@
 
 - hosts: all
   become: yes
-  gather_facts: False
+  gather_facts: True
   roles:
   - docker-swarm
