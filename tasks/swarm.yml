@@ -50,7 +50,7 @@
     dest: "{{ansible_user_dir}}/index.html"
   when: "'swarm-master' in group_names"
 
-- name: Log into DockerHub
+- name: Logging in the Docker Hub
   docker_login:
     username: "{{ user }}"
     password: "{{ password }}"
