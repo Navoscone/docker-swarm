@@ -36,4 +36,6 @@ ansible_ssh_private_key_file=CAMINHO ATÉ A CHAVE
 ## Running Playbook!
 <pre>
 ansible-playbook play-docker-swarm.yml -i hosts --extra-vars "user=USER DOCKER HUB password=SENHA DOCKER HUB"
+
+https://docs.ansible.com/ansible/latest/cli/ansible-playbook.html
 </pre>
